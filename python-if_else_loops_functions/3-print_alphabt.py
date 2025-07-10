@@ -1,7 +1,2 @@
 #!/usr/bin/python3
-output = ""
-for i in range(26):
-    char = chr (97 + i)
-if char not in ['q', 'e']:
-    output += char
-print(output, end='')
+print("{}".format("".join(chr(letter) for letter in range(97, 123) if chr(letter) not in ['q', 'e'])), end="")
