@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-class BaseGeometry:
-    """BaseGeometry class with an area method not implemented yet."""
+"""
+Defines the BaseGeometry class with an area method that raises an exception.
+"""
 
+class BaseGeometry:
     def area(self):
         raise Exception("area() is not implemented")
