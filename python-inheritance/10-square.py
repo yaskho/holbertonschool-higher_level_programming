@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-"""Rectangle class."""
+"""Defines a Square class that inherits from Rectangle."""
+
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """Class square that inherits of Rectangle class."""
+    """Square class that inherits from Rectangle."""
 
     def __init__(self, size):
-        """Initialiaze a square size."""
+        """Initialize a Square with validated size."""
         self.integer_validator("size", size)
-        super().__init__(size, size)
         self.__size = size
+        super().__init__(size, size)
 
     def area(self):
-        """Calculate the area of a square."""
-        return self.__size**2
+        """Return the area of the square."""
+        return self.__size ** 2
