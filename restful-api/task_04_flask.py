@@ -1,4 +1,3 @@
-#!/path/to/python3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
