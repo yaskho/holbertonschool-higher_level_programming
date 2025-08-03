@@ -15,9 +15,10 @@ if __name__ == "__main__":
     ORDER BY cities.id ASC
     """
     cursor.execute(query, (state_name,))
+    rows = cursor.fetchall()
 
-    cities = cursor.fetchall()
-    print(", ".join(city[0] for city in cities))
+    if rows:
+        print(", ".join(row[0] for row in rows))
 
     cursor.close()
     db.close()
