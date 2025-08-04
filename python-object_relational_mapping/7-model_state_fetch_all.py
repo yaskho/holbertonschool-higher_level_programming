@@ -1,28 +1,30 @@
 #!/usr/bin/python3
-import sys
+"""
+Lists all State objects from the database hbtn_0e_6_usa.
+The script takes 3 arguments: mysql username, mysql password,
+and database name.
+Results are sorted in ascending order by states.id.
+"""
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import sys
 from model_state import Base, State
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    # Récupérer les arguments
-    user = sys.argv[1]
+
+    username = sys.argv[1]
     password = sys.argv[2]
-    db_name = sys.argv[3]
+    database = sys.argv[3]
 
-    # Créer le moteur de connexion à MySQL
-    engine = create_engine(f'mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}')
-
-    # Créer une session liée à ce moteur
+    engine = create_engine(
+        f'mysql+mysqldb://{username}:{password}@localhost/{database}',
+        pool_pre_ping=True
+    )
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Faire la requête pour récupérer tous les states triés par id
     states = session.query(State).order_by(State.id).all()
 
-    # Afficher le résultat au format demandé
     for state in states:
         print(f"{state.id}: {state.name}")
-
-    # Fermer la session
-    session.close()
