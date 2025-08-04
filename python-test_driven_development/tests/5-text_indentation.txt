@@ -1,0 +1,37 @@
+This is a test file for the function text_indentation
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. World? Python: is great.")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+Python:
+<BLANKLINE>
+is great.
+
+>>> text_indentation("Line one. Line two")
+Line one.
+<BLANKLINE>
+Line two
+
+>>> text_indentation("Text with no punctuation")
+Text with no punctuation
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation("")
+# Should print nothing
+
+>>> text_indentation("First?  Second:   Third.   End.")
+First?
+<BLANKLINE>
+Second:
+<BLANKLINE>
+Third.
+<BLANKLINE>
+End.
