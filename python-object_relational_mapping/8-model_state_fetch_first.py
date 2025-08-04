@@ -1,14 +1,3 @@
-#!/usr/bin/python3
-"""
-Prints the first State object from the database.
-
-Usage: ./8-model_state_fetch_first.py <mysql_username> <mysql_password> <database_name>
-"""
-import sys
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
-
 def main():
     if len(sys.argv) != 4:
         print("Usage: ./8-model_state_fetch_first.py <mysql_username> <mysql_password> <database_name>")
@@ -19,7 +8,6 @@ def main():
     database = sys.argv[3]
 
     engine = create_engine(f'mysql://{username}:{password}@localhost:3306/{database}')
-    Base.metadata.bind = engine
 
     Session = sessionmaker(bind=engine)
     session = Session()
