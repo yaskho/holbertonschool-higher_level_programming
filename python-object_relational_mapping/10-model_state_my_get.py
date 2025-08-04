@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Script that prints the State object with the name passed as argument."""
+"""
+Script that prints the State object with the name passed as argument
+from the database hbtn_0e_6_usa using SQLAlchemy ORM.
+"""
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -7,6 +11,7 @@ from model_state import Base, State
 
 
 def main():
+    """Connects to the database and prints the id of a State by name."""
     if len(sys.argv) != 5:
         return
 
