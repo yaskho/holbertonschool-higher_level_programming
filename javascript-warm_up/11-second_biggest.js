@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const args = process.argv.slice(2).map(x => parseInt(x));
 
 if (args.length < 2) {
