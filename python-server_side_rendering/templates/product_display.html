@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Product Display</title>
+    <style>
+        table { border-collapse: collapse; width: 60%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h1>Products List</h1>
+        
+        {# 1. Display Error Message if present #}
+        {% if error %}
+            <p class="error">Error: {{ error }}</p>
+        
+        {# 2. Display Data if products list is not empty (and no error) #}
+        {% elif products %}
+            <p>Displaying products from **{{ source | upper }}** source.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Loop through the list of products #}
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>${{ product.price | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+        {# 3. Handle case where source was valid but the file was empty/corrupted #}
+        {% else %}
+            <p>No product data available from the source.</p>
+        {% endif %}
+
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>
