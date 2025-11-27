@@ -1,5 +1,6 @@
 import os
 
+
 def generate_invitations(template, attendees):
 # Input type checks
 if not isinstance(template, str):
