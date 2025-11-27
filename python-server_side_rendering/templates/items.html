@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Items List - My Flask App</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <main>
+        <h1>Available Items</h1>
+        
+        {# 1. Check if the list of items is NOT empty #}
+        {% if items %}
+            <p>We found **{{ items|length }}** items for you:</p>
+            <ul>
+                {# 2. Loop through the list of items #}
+                {% for item in items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {# 3. Conditional: Display this message if the list is empty #}
+            <p><strong>No items found</strong>. Please check the data source.</p>
+        {% endif %}
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>
